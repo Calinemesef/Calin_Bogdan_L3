@@ -6,6 +6,7 @@ import lab3.repository.CourseRepo;
 import lab3.repository.StudRepo;
 import lab3.repository.TeacherRepo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RegistrationSystem {
@@ -54,4 +55,27 @@ public class RegistrationSystem {
             return false;
         }
     }
+
+    //returneaza lista de cursuri cu locuri disponibile
+    public List<Course> retrieveCoursesWithFreePlaces() {
+        List<Course> afiseazaCursuri = new ArrayList<>();
+        for(Course course : courseRepository.findAll()) {
+            if(course.getStudentsEnrolled().size() < course.getMaxEnrollment()) {
+                afiseazaCursuri.add(course);
+            }
+        }
+        return afiseazaCursuri;
+    }
+
+    //afiseaza studentii inscrisi la un anumit curs
+    public List<Student> retrieveStudentsEnrolledForACourse(Course course) {
+        if(courseRepository.findOne(course.getCourseId()) != null) {
+            return course.getStudentsEnrolled();
+        }
+        else {
+            System.out.println("Nu s-a gasit acest curs");
+            return null;
+        }
+    }
+
 }
