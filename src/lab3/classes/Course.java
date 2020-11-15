@@ -9,10 +9,10 @@ public class Course {
     public int maxEnrollment;
     private List<Student> stundentsEnrolled;
     public int credits;
-    private int courseId;
+    private long courseId;
 
 
-    public Course(String name, Person teacher, int maxEnrollment, List<Student> stundentsEnrolled, int credits, int courseId) {
+    public Course(String name, Person teacher, int maxEnrollment, List<Student> stundentsEnrolled, int credits, long courseId) {
         this.name = name;
         this.teacher = teacher;
         this.maxEnrollment = maxEnrollment;
@@ -61,11 +61,16 @@ public class Course {
         this.credits = credits;
     }
 
-    public int getCourseId() {
+    public long getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(int courseId) {
+    public void setCourseId(long courseId) {
         this.courseId = courseId;
+    }
+
+    public String toString(){
+        return "Cursul " + name + " cu id-ul " + courseId + " si cu numarul de credite " + credits + "\n";
+
     }
 }
