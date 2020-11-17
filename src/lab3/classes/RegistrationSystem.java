@@ -78,4 +78,10 @@ public class RegistrationSystem {
         }
     }
 
+    public List<Course> getAllCourses(){
+        List<Course> toate_cursurile = new ArrayList<>();
+        courseRepository.findAll().forEach(toate_cursurile::add);
+        return toate_cursurile;
+    }
+
 }
