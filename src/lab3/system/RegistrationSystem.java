@@ -1,4 +1,4 @@
-package lab3.classes;
+package lab3.system;
 
 import lab3.classes.Course;
 import lab3.classes.Student;
