@@ -12,7 +12,7 @@ public class CourseController implements ICrudRepository<Course> {
     public Course findOne(Long id) {    return repo.findOne(id); }
 
     @Override
-    public Iterable findAll() {     return repo.findAll(); }
+    public Iterable<Course> findAll() {     return repo.findAll(); }
 
     @Override
     public Course save(Course entity) { return repo.save(entity); }

@@ -24,9 +24,7 @@ public class CourseRepo implements ICrudRepository<Course> {
     }
 
     @Override
-    public Iterable<Course> findAll() {
-        return courses;
-    }
+    public Iterable<Course> findAll() { return courses; }
 
     @Override
     public Course save(Course entity) {

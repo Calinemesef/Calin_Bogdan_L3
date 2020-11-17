@@ -22,7 +22,7 @@ public class StudRepo implements ICrudRepository<Student>{
     }
 
     @Override
-    public Iterable findAll() {
+    public Iterable<Student> findAll() {
         return students;
     }
 
