@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TeacherRepo implements ICrudRepository<Teacher>{
 
-    private List<Teacher> teachers = new ArrayList<Teacher>();
+    public List<Teacher> teachers = new ArrayList<Teacher>();
 
     public boolean isEmpty(){
         if(teachers.isEmpty())

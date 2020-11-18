@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CourseRepo implements ICrudRepository<Course> {
 
-    private List<Course> courses = new ArrayList<Course>();
+    public List<Course> courses = new ArrayList<Course>();
 
     public boolean isEmpty(){
         if(courses.size()==0)
@@ -36,7 +36,7 @@ public class CourseRepo implements ICrudRepository<Course> {
     }
 
     @Override
-    public Course delete(Long id) {
+    public Course delete(Long id) { ///////////////
         for(Course c:courses)
             if(c.getCourseId() == id) {
                 courses.remove(c);
@@ -46,7 +46,7 @@ public class CourseRepo implements ICrudRepository<Course> {
     }
 
     @Override
-    public Course update(Course entity) {
+    public Course update(Course entity) {   ///////////
         for(Course c:courses)
             if(c.getCourseId() == entity.getCourseId())
             {
