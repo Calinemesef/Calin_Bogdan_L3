@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CourseRepo implements ICrudRepository<Course> {
 
-    public List<Course> courses = new ArrayList<Course>();
+    public static List<Course> courses = new ArrayList<Course>();
 
     public boolean isEmpty(){
         if(courses.size()==0)

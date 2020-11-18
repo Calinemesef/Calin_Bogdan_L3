@@ -2,6 +2,7 @@ package lab3.system;
 
 import lab3.classes.Course;
 import lab3.classes.Student;
+import lab3.classes.Teacher;
 import lab3.repository.CourseRepo;
 import lab3.repository.StudRepo;
 import lab3.repository.TeacherRepo;
@@ -78,10 +79,13 @@ public class RegistrationSystem {
         }
     }
 
+    //returneaza o lista de cursuri
     public List<Course> getAllCourses(){
-        List<Course> toate_cursurile = new ArrayList<>();
-        courseRepository.findAll().forEach(toate_cursurile::add);
-        return toate_cursurile;
+        List<Course> toateCursurile = new ArrayList<>();
+        courseRepository.findAll().forEach(toateCursurile::add);
+        return toateCursurile;
     }
+
+
 
 }

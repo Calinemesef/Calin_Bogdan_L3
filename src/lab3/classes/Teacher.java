@@ -1,5 +1,6 @@
 package lab3.classes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Teacher extends Person{
