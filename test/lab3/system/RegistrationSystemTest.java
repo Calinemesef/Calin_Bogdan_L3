@@ -38,6 +38,7 @@ class RegistrationSystemTest {
 
     Course c1 = new Course("Algebra",prof1,300, studenti_c1, 5,1);
     Course c2 = new Course("Analiza",prof2,150, studenti_c2, 4,2);
+    Course c3 = new Course("Info",prof2,0, studenti_c2, 4,3);
 
 
     @BeforeEach
@@ -52,7 +53,7 @@ class RegistrationSystemTest {
     enrolled1.add(c1);
     enrolled2.add(c2);
 
-    repo_curs.save(c1);repo_curs.save(c2);
+    repo_curs.save(c1);repo_curs.save(c2);repo_curs.save(c3);
     repo_student.save(stud1);repo_student.save(stud2);
     repo_teacher.save(prof1);repo_teacher.save(prof2);
     }
@@ -72,13 +73,27 @@ class RegistrationSystemTest {
 
     @Test
     void retrieveCoursesWithFreePlaces() {
+        List<Course> lista = new ArrayList<>();
+        List<Course> lista2 = new ArrayList<>();
+        lista2.add(c1);
+        lista2.add(c2);
+        lista = regsys.retrieveCoursesWithFreePlaces();
+        assertEquals(lista.get(1),lista2.get(1));
+        assertEquals(lista.get(0),lista2.get(0));
+        assertSame(lista.get(1), lista2.get(1));
+        assertSame(lista.get(0), lista2.get(0));
     }
 
     @Test
     void retrieveStudentsEnrolledForACourse() {
+        assertSame(regsys.retrieveStudentsEnrolledForACourse(c1),studenti_c1);
+        assertSame(regsys.retrieveStudentsEnrolledForACourse(c2),studenti_c2);
+        assertEquals(regsys.retrieveStudentsEnrolledForACourse(c2),studenti_c2);
+        assertEquals(regsys.retrieveStudentsEnrolledForACourse(c1),studenti_c1);
     }
 
     @Test
     void getAllCourses() {
+        assertEquals(regsys.getAllCourses(),repo_curs.courses);
     }
 }
