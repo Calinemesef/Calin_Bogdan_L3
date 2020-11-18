@@ -28,7 +28,7 @@ public class RegistrationSystem {
         }
         if (studentRepository.findOne(student.getStudentId()) != null && courseRepository.findOne(course.getCourseId()) != null) {
             if (course.getStudentsEnrolled().size() < course.getMaxEnrollment()) {
-                if (student.getTotalCredits() + course.getCredits() >= 30) {
+                if (student.getTotalCredits() + course.getCredits() > 30) {
                     System.out.println("Studentul depaseste numarul de credite maxime admise.");
                     return false;
                 } else {

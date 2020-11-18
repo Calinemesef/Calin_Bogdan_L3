@@ -22,4 +22,6 @@ public class CourseController implements ICrudRepository<Course> {
 
     @Override
     public Course update(Course entity) {   return repo.update(entity); }
+
+
 }

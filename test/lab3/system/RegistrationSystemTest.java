@@ -37,7 +37,7 @@ class RegistrationSystemTest {
     Teacher prof2 = new Teacher("Prenume2","Nume2",6,lista_cursuri2);
 
     Course c1 = new Course("Algebra",prof1,300, studenti_c1, 5,1);
-    Course c2 = new Course("Analiza",prof2,150, studenti_c2, 6,2);
+    Course c2 = new Course("Analiza",prof2,150, studenti_c2, 4,2);
 
 
     @BeforeEach

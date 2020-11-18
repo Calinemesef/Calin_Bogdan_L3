@@ -27,7 +27,7 @@ public class CourseRepo implements ICrudRepository<Course> {
     public Iterable<Course> findAll() { return courses; }
 
     @Override
-    public Course save(Course entity) {
+    public Course save(Course entity) { // pentru course-lista  studenti-cauti studentul si maresti creditele
         for(Course c:courses)
             if(c.getCourseId() == entity.getCourseId())
                 return entity;
