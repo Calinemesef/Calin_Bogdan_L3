@@ -27,7 +27,7 @@ public class CourseRepo implements ICrudRepository<Course> {
     public Iterable<Course> findAll() { return courses; }
 
     @Override
-    public Course save(Course entity) { // pentru course-lista  studenti-cauti studentul si maresti creditele
+    public Course save(Course entity) {
         for(Course c:courses)
             if(c.getCourseId() == entity.getCourseId())
                 return entity;
@@ -36,7 +36,7 @@ public class CourseRepo implements ICrudRepository<Course> {
     }
 
     @Override
-    public Course delete(Long id) { ///////////////
+    public Course delete(Long id) {
         for(Course c:courses)
             if(c.getCourseId() == id) {
                 courses.remove(c);
@@ -46,7 +46,7 @@ public class CourseRepo implements ICrudRepository<Course> {
     }
 
     @Override
-    public Course update(Course entity) {   ///////////
+    public Course update(Course entity) {
         for(Course c:courses)
             if(c.getCourseId() == entity.getCourseId())
             {

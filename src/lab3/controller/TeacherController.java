@@ -41,14 +41,13 @@ public class TeacherController implements ICrudRepository<Teacher> {
     }
 
 
+    /**
+     *Se verifica daca exita profesorul dat in repository-ul de profesori,daca profesorul exista,
+     *iar daca cursul este in lista de cursuri ale unui profesor, se creeaza o lista de cursuri noua
+     *in care se adauga cursurile deja existente in lista veche atata timp cat cursul curent este
+     *diferit de cursul pe care vrem sa il stergem. La sfarsit, se sterge cursul
+     */
     public boolean teacherDeleteCourse(Teacher teacher, Course course) {
-        /**
-
-         Se verifica daca exita profesorul dat in repository-ul de profesori,daca profesorul exista,
-         iar daca cursul este in lista de cursuri ale unui profesor, se creeaza o lista de cursuri noua
-         in care se adauga cursurile deja existente in lista veche atata timp cat cursul curent este
-         diferit de cursul pe care vrem sa il stergem. La sfarsit, se sterge cursul
-        */
 
         if(repo.findOne(teacher.getTeacherId()) != null) {
 
