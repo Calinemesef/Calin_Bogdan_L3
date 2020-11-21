@@ -66,12 +66,11 @@ class TeacherControllerTest {
 
     @Test
     void teacherDeleteCourse() {
-        boolean x = teacherController.teacherDeleteCourse(prof1,c1);
-        System.out.println(x);
-        for(int i = 0; i< CourseRepo.courses.size(); i++){
-            System.out.println(CourseRepo.courses.get(i));
-        }
+        teacherController.teacherDeleteCourse(prof1,c1);
+//        for(int i = 0; i< CourseRepo.courses.size(); i++){
+//            System.out.println(CourseRepo.courses.get(i));
+//        }
 
-        //assertTrue(repo_curs.findOne(c1.getCourseId())==null);
+        assert (repo_curs.findOne(c1.getCourseId())==null);
     }
 }
