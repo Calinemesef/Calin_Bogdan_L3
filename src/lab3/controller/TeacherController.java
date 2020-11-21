@@ -1,7 +1,6 @@
 package lab3.controller;
 
 import lab3.classes.Course;
-import lab3.classes.Student;
 import lab3.classes.Teacher;
 import lab3.repository.CourseRepo;
 import lab3.repository.ICrudRepository;
@@ -63,7 +62,7 @@ public class TeacherController implements ICrudRepository<Teacher> {
 
                 teacher.setCourses(cursuriModificateProfesori);
 
-                CourseRepo.courses.remove(course.getCourseId());
+                CourseRepo.delete(course.getCourseId());
                 return true;
             }
             else {
