@@ -1,8 +1,8 @@
 package lab3.system;
 
+import lab3.exception.*;
 import lab3.classes.Course;
 import lab3.classes.Student;
-import lab3.classes.Teacher;
 import lab3.repository.CourseRepo;
 import lab3.repository.StudRepo;
 import lab3.repository.TeacherRepo;
@@ -60,13 +60,14 @@ public class RegistrationSystem {
     //returneaza lista de cursuri cu locuri disponibile
     public List<Course> retrieveCoursesWithFreePlaces() {
         List<Course> afiseazaCursuri = new ArrayList<>();
-        for(Course course : courseRepository.findAll()) {
-            if(course.getStudentsEnrolled().size() < course.getMaxEnrollment()) {
+        for (Course course : courseRepository.findAll()) {
+            if (course.getStudentsEnrolled().size() < course.getMaxEnrollment()) {
                 afiseazaCursuri.add(course);
             }
         }
         return afiseazaCursuri;
     }
+
 
     //afiseaza studentii inscrisi la un anumit curs
     public List<Student> retrieveStudentsEnrolledForACourse(Course course) {
@@ -86,6 +87,14 @@ public class RegistrationSystem {
         return toateCursurile;
     }
 
+    public List<Course> validateList(List<Course> cursuri) throws EmptyListException{
 
+        if(cursuri.size()==0){
+            throw new EmptyListException("Nu sunt cursuri cu locuri disponibile!");
+        }
+        else{
+            return cursuri;
+        }
+    }
 
 }
