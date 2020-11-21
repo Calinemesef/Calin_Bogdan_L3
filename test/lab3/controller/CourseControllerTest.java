@@ -76,5 +76,10 @@ class CourseControllerTest {
 
     @Test
     void filterCredits() {
+        cursController.filterCredits();
+        for(int i = 0; i< CourseRepo.courses.size()-1; i++){
+            assert(CourseRepo.courses.get(i).getCredits()<8);
+        }
+
     }
 }
