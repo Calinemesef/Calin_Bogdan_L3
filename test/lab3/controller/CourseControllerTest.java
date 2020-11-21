@@ -10,6 +10,9 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import static org.junit.jupiter.api.Assertions.*;
+
 class CourseControllerTest {
 
     CourseController cursController = new CourseController();
@@ -39,6 +42,7 @@ class CourseControllerTest {
     Course c8 = new Course("Sport",prof2,0, studenti_c2, 8,8);
     Course c9 = new Course("Statistica",prof2,0, studenti_c2, 5,9);
     Course c10 = new Course("Engleza",prof2,0, studenti_c2, 10,10);
+    Course c11 = new Course("Engleza",prof2,0, studenti_c2, 10,111);
 
 
 
@@ -54,14 +58,19 @@ class CourseControllerTest {
         cursController.save(c8);
         cursController.save(c9);
         cursController.save(c10);
+        cursController.save(c11);
+
     }
 
 
     @Test
     void sortByName() {
         cursController.sortByName();
-        for(int i = 0; i< CourseRepo.courses.size(); i++){
-            assert(CourseRepo.courses.get(i).getName().compareTo(CourseRepo.courses.get(i+1).getName())==-1 || CourseRepo.courses.get(i).getName().equals(CourseRepo.courses.get(i+1).getName()));
+        for(int i = 0; i< CourseRepo.courses.size()-1; i++){
+            //System.out.println(CourseRepo.courses.get(i));
+            //assert(CourseRepo.courses.get(i).getName().compareTo(CourseRepo.courses.get(i+1).getName())==-1 || CourseRepo.courses.get(i).getName().equals(CourseRepo.courses.get(i+1).getName()));
+            assert(CourseRepo.courses.get(i+1).compareTo(CourseRepo.courses.get(i))>=0);
+            //System.out.println(CourseRepo.courses.get(i+1).compareTo(CourseRepo.courses.get(i)));
         }
     }
 

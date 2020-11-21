@@ -2,7 +2,7 @@ package lab3.classes;
 
 import java.util.List;
 
-public class Course {
+public class Course implements  Comparable<Course>{
 
     private String name;
     private Person teacher;
@@ -71,5 +71,11 @@ public class Course {
 
     public String toString(){
         return "Cursul " + name + " cu id-ul " + courseId + " si cu numarul de credite " + credits + "\n";
+    }
+
+
+    @Override
+    public int compareTo(Course o) {
+        return this.getName().compareTo(o.getName());
     }
 }
