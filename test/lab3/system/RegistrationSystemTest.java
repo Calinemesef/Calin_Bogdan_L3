@@ -94,6 +94,6 @@ class RegistrationSystemTest {
 
     @Test
     void getAllCourses() {
-        assertEquals(regsys.getAllCourses(),repo_curs.courses);
+        assertEquals(regsys.getAllCourses(), CourseRepo.courses);
     }
 }

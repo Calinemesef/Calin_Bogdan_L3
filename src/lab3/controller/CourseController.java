@@ -36,7 +36,7 @@ public class CourseController implements ICrudRepository<Course> {
     }
 
     /**
-     *  Methode fur Filtrieren der Kursen aus dem Repo nach Kreditanzahl, es bleiben nur die mit credits <8
+     *  Methode fur Filtrieren der Kursen aus dem Repo nach Kreditanzahl, es bleiben nur diejenigen mit credits <8
      */
     void filterCredits(){
         List<Course> listaNoua = CourseRepo.courses.stream().filter(curs -> curs.getCredits() < 8).collect(Collectors.toList());
