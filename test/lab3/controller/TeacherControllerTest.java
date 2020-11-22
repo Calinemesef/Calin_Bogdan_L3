@@ -67,9 +67,9 @@ class TeacherControllerTest {
     @Test
     void teacherDeleteCourse() {
         teacherController.teacherDeleteCourse(prof1,c1);
-//        for(int i = 0; i< CourseRepo.courses.size(); i++){
-//            System.out.println(CourseRepo.courses.get(i));
-//        }
+/*        for(int i = 0; i< CourseRepo.courses.size(); i++){
+             System.out.println(CourseRepo.courses.get(i));
+        }*/
 
         assert (repo_curs.findOne(c1.getCourseId())==null);
     }

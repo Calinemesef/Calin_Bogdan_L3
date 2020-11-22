@@ -58,7 +58,7 @@ public class TeacherController implements ICrudRepository<Teacher> {
                 List<Long> cursuriModificateProfesori = new ArrayList<>();
 
                 for(Long c : teacher.getCourses()) {
-                    if(c != course.getCourseId()) {
+                    if(c != cursId) {
                         cursuriModificateProfesori.add(c);
                     }
                 }

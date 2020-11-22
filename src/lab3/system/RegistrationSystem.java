@@ -24,26 +24,32 @@ public class RegistrationSystem {
 
     //functia care inregistreaza un nou student la un curs
     public boolean register(Course course, Student student) {
-        if (course.getStudentsEnrolled().contains(student) || student.getEnrolledCourses().contains(course)) {
+
+        long cursId = course.getCourseId();
+        long studentId = student.getStudentId();
+
+        if (course.getStudentsEnrolled().contains(studentId) || student.getEnrolledCourses().contains(cursId)) {
             return false;
         }
         if (studentRepository.findOne(student.getStudentId()) != null && courseRepository.findOne(course.getCourseId()) != null) {
             if (course.getStudentsEnrolled().size() < course.getMaxEnrollment()) {
+
+
                 if (student.getTotalCredits() + course.getCredits() > 30) {
                     System.out.println("Studentul depaseste numarul de credite maxime admise.");
                     return false;
                 } else {
                     //se appenduieste cursul nou in lista de cursuri al unui student
-                    List<Course> cursuriNoi;
+                    List<Long> cursuriNoi;
                     cursuriNoi = student.getEnrolledCourses();
-                    cursuriNoi.add(course);
+                    cursuriNoi.add(cursId);
                     student.setEnrolledCourses(cursuriNoi);
                     student.setTotalCredits(student.getTotalCredits() + course.getCredits());
 
                     //se appenduieste studentul nou inclus la lista de studenti inscrisi la un curs
-                    List<Student> studentiNoi;
+                    List<Long> studentiNoi;
                     studentiNoi = course.getStudentsEnrolled();
-                    studentiNoi.add(student);
+                    studentiNoi.add(studentId);
                     course.setStudentsEnrolled(studentiNoi);
                     return true;
                 }
@@ -70,7 +76,7 @@ public class RegistrationSystem {
 
 
     //afiseaza studentii inscrisi la un anumit curs
-    public List<Student> retrieveStudentsEnrolledForACourse(Course course) {
+    public List<Long> retrieveStudentsEnrolledForACourse(Course course) {
         if(courseRepository.findOne(course.getCourseId()) != null) {
             return course.getStudentsEnrolled();
         }
