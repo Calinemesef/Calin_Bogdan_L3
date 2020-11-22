@@ -34,6 +34,6 @@ public class Teacher extends Person{
     }
 
     public String toString(){
-        return "Profesorul " + getFirstName() + getLastName() + " cu id-ul " + teacherId +  "\n" ;
+        return "Profesorul " + getFirstName() + " " + getLastName() + " cu id-ul " + teacherId +  "\n" ;
     }
 }

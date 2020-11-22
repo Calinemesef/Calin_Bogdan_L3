@@ -1,6 +1,14 @@
-{
+{"Teacher": [{
   "firstName": "Prenume",
   "lastName": "Nume",
   "teacherId": 1,
   "courses": [1,2,3]
+},
+  {
+  "firstName" : "Prenume2",
+  "lastName": "Nume2",
+  "teacherId": 2,
+    "courses": [2,3,4]
+    }
+]
 }
