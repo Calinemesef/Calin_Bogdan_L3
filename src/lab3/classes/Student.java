@@ -1,7 +1,5 @@
 package lab3.classes;
 
-import javax.management.openmbean.ArrayType;
-import java.lang.reflect.Array;
 import java.util.List;
 
 public class Student extends Person{
@@ -9,9 +7,13 @@ public class Student extends Person{
     private long studentId;
     private int totalCredits;
 
-    private List<Course> enrolledCourses;
+    private List<Long> enrolledCourses;
 
-    public Student(String firstName, String lastName, long studentId, int totalCredits, List<Course> enrolledCourses) {
+    public Student(String firstName, String lastName){
+        super(firstName, lastName);
+    }
+
+    public Student(String firstName, String lastName, long studentId, int totalCredits, List<Long> enrolledCourses) {
         super(firstName, lastName);
         this.studentId = studentId;
         this.totalCredits = totalCredits;
@@ -34,11 +36,11 @@ public class Student extends Person{
         this.totalCredits = totalCredits;
     }
 
-    public List<Course> getEnrolledCourses() {
+    public List<Long> getEnrolledCourses() {
         return enrolledCourses;
     }
 
-    public void setEnrolledCourses(List<Course> enrolledCourses) {
+    public void setEnrolledCourses(List<Long> enrolledCourses) {
         this.enrolledCourses = enrolledCourses;
     }
 }

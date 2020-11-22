@@ -5,16 +5,19 @@ import java.util.List;
 public class Course implements  Comparable<Course>{
 
     private String name;
-    private Person teacher;
+    private Long teacherId;
     public int maxEnrollment;
-    private List<Student> studentsEnrolled;
+    private List<Long> studentsEnrolled;
     public int credits;
     private long courseId;
 
+    public Course(String name){
 
-    public Course(String name, Person teacher, int maxEnrollment, List<Student> studentsEnrolled, int credits, long courseId) {
+    }
+
+    public Course(String name, Long teacherId, int maxEnrollment, List<Long> studentsEnrolled, int credits, long courseId) {
         this.name = name;
-        this.teacher = teacher;
+        this.teacherId = teacherId;
         this.maxEnrollment = maxEnrollment;
         this.studentsEnrolled = studentsEnrolled;
         this.credits = credits;
@@ -29,12 +32,12 @@ public class Course implements  Comparable<Course>{
         this.name = name;
     }
 
-    public Person getTeacher() {
-        return teacher;
+    public Long getTeacher() {
+        return teacherId;
     }
 
-    public void setTeacher(Person teacher) {
-        this.teacher = teacher;
+    public void setTeacher(Long teacherId) {
+        this.teacherId = teacherId;
     }
 
     public int getMaxEnrollment() {
@@ -45,11 +48,11 @@ public class Course implements  Comparable<Course>{
         this.maxEnrollment = maxEnrollment;
     }
 
-    public List<Student> getStudentsEnrolled() {
+    public List<Long> getStudentsEnrolled() {
         return studentsEnrolled;
     }
 
-    public void setStudentsEnrolled(List<Student> studentsEnrolled) {
+    public void setStudentsEnrolled(List<Long> studentsEnrolled) {
         this.studentsEnrolled = studentsEnrolled;
     }
 
