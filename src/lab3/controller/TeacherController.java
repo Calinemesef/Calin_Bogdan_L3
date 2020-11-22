@@ -12,7 +12,7 @@ import java.util.List;
 
 public class TeacherController implements ICrudRepository<Teacher> {
 
-    TeacherRepo repo = new TeacherRepo();
+    public TeacherRepo repo = new TeacherRepo();
 
 
     @Override
