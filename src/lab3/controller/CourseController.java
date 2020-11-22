@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class CourseController implements ICrudRepository<Course> {
 
-    CourseRepo repo = new CourseRepo();
+    public CourseRepo repo = new CourseRepo();
 
     @Override
     public Course findOne(Long id) {    return repo.findOne(id); }

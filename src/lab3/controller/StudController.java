@@ -5,7 +5,7 @@ import lab3.repository.ICrudRepository;
 import lab3.repository.StudRepo;
 
 public class StudController implements ICrudRepository<Student> {
-    StudRepo repo = new StudRepo();
+    public StudRepo repo = new StudRepo();
 
     @Override
     public Student findOne(Long id) {   return repo.findOne(id); }

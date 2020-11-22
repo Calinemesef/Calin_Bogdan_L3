@@ -1,5 +1,6 @@
 package lab3.system;
 
+
 import lab3.classes.Course;
 import lab3.classes.Student;
 import lab3.repository.CourseRepo;
@@ -23,13 +24,7 @@ public class RegistrationSystem {
 
     //functia care inregistreaza un nou student la un curs
     public boolean register(Course course, Student student) {
-/*        if (course.getStudentsEnrolled().contains(student) || student.getEnrolledCourses().contains(course)) {
-            return false;
-        }*/
-        long cursId = course.getCourseId();
-        long studentId = student.getStudentId();
-
-        if (course.getStudentsEnrolled().contains(studentId) || student.getEnrolledCourses().contains(cursId)) {
+        if (course.getStudentsEnrolled().contains(student) || student.getEnrolledCourses().contains(course)) {
             return false;
         }
         if (studentRepository.findOne(student.getStudentId()) != null && courseRepository.findOne(course.getCourseId()) != null) {
@@ -39,16 +34,16 @@ public class RegistrationSystem {
                     return false;
                 } else {
                     //se appenduieste cursul nou in lista de cursuri al unui student
-                    List<Long> cursuriNoi;
+                    List<Course> cursuriNoi;
                     cursuriNoi = student.getEnrolledCourses();
-                    cursuriNoi.add(cursId);
+                    cursuriNoi.add(course);
                     student.setEnrolledCourses(cursuriNoi);
                     student.setTotalCredits(student.getTotalCredits() + course.getCredits());
 
                     //se appenduieste studentul nou inclus la lista de studenti inscrisi la un curs
-                    List<Long> studentiNoi;
+                    List<Student> studentiNoi;
                     studentiNoi = course.getStudentsEnrolled();
-                    studentiNoi.add(studentId);
+                    studentiNoi.add(student);
                     course.setStudentsEnrolled(studentiNoi);
                     return true;
                 }
@@ -75,7 +70,7 @@ public class RegistrationSystem {
 
 
     //afiseaza studentii inscrisi la un anumit curs
-    public List<Long> retrieveStudentsEnrolledForACourse(Course course) {
+    public List<Student> retrieveStudentsEnrolledForACourse(Course course) {
         if(courseRepository.findOne(course.getCourseId()) != null) {
             return course.getStudentsEnrolled();
         }
@@ -92,14 +87,14 @@ public class RegistrationSystem {
         return toateCursurile;
     }
 
-/*    public List<Course> validateList(List<Course> cursuri) throws EmptyListException{
-
-        if(cursuri.size()==0){
-            throw new EmptyListException("Nu sunt cursuri cu locuri disponibile!");
-        }
-        else{
-            return cursuri;
-        }
-    }*/
+//    public List<Course> validateList(List<Course> cursuri) throws EmptyListException{
+//
+//        if(cursuri.size()==0){
+//            throw new EmptyListException("Nu sunt cursuri cu locuri disponibile!");
+//        }
+//        else{
+//            return cursuri;
+//        }
+//    }
 
 }
