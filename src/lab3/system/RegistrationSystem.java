@@ -1,6 +1,5 @@
 package lab3.system;
 
-import lab3.exception.*;
 import lab3.classes.Course;
 import lab3.classes.Student;
 import lab3.repository.CourseRepo;
@@ -93,7 +92,7 @@ public class RegistrationSystem {
         return toateCursurile;
     }
 
-    public List<Course> validateList(List<Course> cursuri) throws EmptyListException{
+/*    public List<Course> validateList(List<Course> cursuri) throws EmptyListException{
 
         if(cursuri.size()==0){
             throw new EmptyListException("Nu sunt cursuri cu locuri disponibile!");
@@ -101,6 +100,6 @@ public class RegistrationSystem {
         else{
             return cursuri;
         }
-    }
+    }*/
 
 }
