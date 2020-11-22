@@ -15,9 +15,9 @@ import java.util.List;
 public class TeacherFile {
 
     public List<Teacher> readFile() throws IOException {
-        List<Teacher> teachers = new ArrayList<>();
+        List<Teacher> teachers= new ArrayList<>();
 
-        Reader reader = new BufferedReader(new FileReader("profesori.json"));
+        Reader reader = new BufferedReader(new FileReader("src/lab3/fileRepository/profesori.json"));
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode parser = objectMapper.readTree(reader);

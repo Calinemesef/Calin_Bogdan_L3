@@ -32,4 +32,8 @@ public class Teacher extends Person{
     public void setCourses(List<Long> courses) {
         this.courses = courses;
     }
+
+    public String toString(){
+        return "Profesorul " + getFirstName() + getLastName() + " cu id-ul " + teacherId +  "\n" ;
+    }
 }
