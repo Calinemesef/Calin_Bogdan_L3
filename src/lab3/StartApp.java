@@ -29,8 +29,7 @@ public class StartApp {
      */
     public static void main(String[] args) {
         System.out.println("Start point");
-        Console c = new Console();
-        //c.display();
+
         TeacherFile fisierTeacher = new TeacherFile();
         StudentsFile fisierStudent = new StudentsFile();
         CoursesFile fisierCourse = new CoursesFile();
@@ -60,7 +59,7 @@ public class StartApp {
 
             Console console = new Console(courseController, studController, teacherController);
 
-            c.display();
+            console.display();
             // CtrlTeacher.repo = teacher_repo
             // Console c = new Console(CtrlTeacher,CtrlStudent,CtrlCourse)
             //System.out.println(teachers.size());
@@ -68,16 +67,16 @@ public class StartApp {
         } catch (IOException e) {
             e.printStackTrace();
         }
-/*        for(int i=0;i<teacherRepo.teachers.size();i++){
-            System.out.println(teacherRepo.teachers.get(i));
-        }
-        for(int i=0;i<studRepo.students.size();i++){
-            System.out.println(studRepo.students.get(i));
-        }
-        for(int i=0;i<courseRepo.courses.size();i++){
-            System.out.println(courseRepo.courses.get(i));
-        }*/
-
+//        for(int i=0;i<teacherRepo.teachers.size();i++){
+//            System.out.println(teacherRepo.teachers.get(i));
+//        }
+//        for(int i=0;i<studRepo.students.size();i++){
+//            System.out.println(studRepo.students.get(i));
+//        }
+//        for(int i=0;i<courseRepo.courses.size();i++){
+//            System.out.println(courseRepo.courses.get(i));
+//        }
+//
 
 
 

@@ -5,9 +5,17 @@ import lab3.classes.Teacher;
 import lab3.controller.*;
 import lab3.system.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+/*
+error handling
+diagrama
+studentctrl - set id set lista set credits
+curatat cod
+comentarii
+override in fisier json
+
+ */
 
 public class Console {
 
@@ -25,25 +33,21 @@ public class Console {
         this.registrationSystem = new RegistrationSystem(teacherCtrl.repo, studCtrl.repo, cursCtrl.repo);
     }
 
-    public Console() {
-
-    }
-
     public void display() {
+        System.out.println("MENU");
+        System.out.println("0. Quit");
+        System.out.println("1. Student Controller");
+        System.out.println("2. Course Controller");
+        System.out.println("3. Teacher Controller");
+        System.out.println("4. Registration System");
+        Scanner in = new Scanner(System.in);
+        input = in.nextInt();
         while (input != 0) {
-            System.out.println("Meniu Complet");
-            System.out.println("0. Quit");
-            System.out.println("1. Controller Studenti");
-            System.out.println("2. Controller Cursuri");
-            System.out.println("3. Controller Profesori");
-            System.out.println("4. Registration System");
 
-            Scanner in = new Scanner(System.in);
-            input = in.nextInt();
             if (input == 4) {
                 int x;
 
-                System.out.println("Meniu Registration System");
+                System.out.println("Registration System");
                 System.out.println("0. Quit");
                 System.out.println("1. Register Student to a Course");
                 System.out.println("2. Retrieve courses with free places");
@@ -91,7 +95,7 @@ public class Console {
             } else if (input == 3) {
 
                 int x;
-                System.out.println("Controller Profesori");
+                System.out.println("Teacher Controller");
                 System.out.println("0. Exit");
                 System.out.println("1. Delete course from teacher");
                 System.out.println("2. Show all teachers");
@@ -120,7 +124,7 @@ public class Console {
                     }
                 }
             } else if (input == 2) {
-                System.out.println("Controller Cursuri");
+                System.out.println("Course Controller");
                 System.out.println("0. Exit");
                 System.out.println("1. Sort by name");
                 System.out.println("2. Filter by credits");
@@ -139,7 +143,7 @@ public class Console {
                 }
                 else if (x == 2) {
                     System.out.println("2. Filter by credits");
-                    System.out.println("es bleiben nur diejenigen mit credits <8");
+                    System.out.println("Courses with credits < 8 only:");
                     cursCtrl.filterCredits();
                     for (Course c : cursCtrl.repo.courses) {
                         System.out.println(c);
@@ -151,7 +155,7 @@ public class Console {
                         System.out.println(c);
                 }
             } else if (input == 1){
-                System.out.println("Controller Studenti");
+                System.out.println("Student Controller");
                 System.out.println("0. Exit");
                 System.out.println("1. Show all students");
                 System.out.println("2. Add student");
@@ -188,6 +192,12 @@ public class Console {
                         System.out.println("Student not found");
                 }
             }
+            System.out.println("MENU");
+            System.out.println("0. Quit");
+            System.out.println("1. Student Controller");
+            System.out.println("2. Course Controller");
+            System.out.println("3. Teacher Controller");
+            System.out.println("4. Registration System");
             input = in.nextInt();
         }
     }
