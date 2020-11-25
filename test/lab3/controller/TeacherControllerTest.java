@@ -7,6 +7,7 @@ import lab3.repository.CourseRepo;
 import lab3.repository.StudRepo;
 import lab3.repository.TeacherRepo;
 import lab3.system.RegistrationSystem;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -54,6 +55,7 @@ class TeacherControllerTest {
         enrolled1.add(c1.getCourseId());
         enrolled2.add(c2.getCourseId());
 
+
         repo_curs.save(c1);
         repo_curs.save(c2);
         repo_curs.save(c3);
@@ -62,15 +64,17 @@ class TeacherControllerTest {
         repo_student.save(stud2);
         repo_teacher.save(prof1);
         repo_teacher.save(prof2);
+        teacherController.repo = repo_teacher;
     }
 
     @Test
     void teacherDeleteCourse() {
-        teacherController.teacherDeleteCourse(prof1,c1);
+        teacherController.teacherDeleteCourse(prof1,c1, repo_curs);
 /*        for(int i = 0; i< CourseRepo.courses.size(); i++){
              System.out.println(CourseRepo.courses.get(i));
         }*/
 
-        assert (repo_curs.findOne(c1.getCourseId())==null);
+     assert (repo_curs.findOne(c1.getCourseId())==null);
     }
+    
 }

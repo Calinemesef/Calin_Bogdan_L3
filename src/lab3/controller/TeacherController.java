@@ -47,7 +47,7 @@ public class TeacherController implements ICrudRepository<Teacher> {
      *in care se adauga cursurile deja existente in lista veche atata timp cat cursul curent este
      *diferit de cursul pe care vrem sa il stergem. La sfarsit, se sterge cursul
      */
-    public boolean teacherDeleteCourse(Teacher teacher, Course course) {
+    public boolean teacherDeleteCourse(Teacher teacher, Course course, CourseRepo repoCurs) {
 
         if(repo.findOne(teacher.getTeacherId()) != null) {
 
@@ -66,7 +66,7 @@ public class TeacherController implements ICrudRepository<Teacher> {
                 teacher.setCourses(cursuriModificateProfesori);
 
                 //CourseController.repo.delete(course.getCourseId());
-                CourseRepo.courses.remove(course);
+                repoCurs.courses.remove(course);
                 return true;
             }
             else {

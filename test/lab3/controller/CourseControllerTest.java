@@ -63,10 +63,10 @@ class CourseControllerTest {
     @Test
     void sortByName() {
         cursController.sortByName();
-        for(int i = 0; i< CourseRepo.courses.size()-1; i++){
+        for(int i = 0; i< cursController.repo.size()-1; i++){
             //System.out.println(CourseRepo.courses.get(i));
             //assert(CourseRepo.courses.get(i).getName().compareTo(CourseRepo.courses.get(i+1).getName())==-1 || CourseRepo.courses.get(i).getName().equals(CourseRepo.courses.get(i+1).getName()));
-            assert(CourseRepo.courses.get(i+1).compareTo(CourseRepo.courses.get(i))>=0);
+            assert(cursController.repo.courses.get(i+1).compareTo(cursController.repo.courses.get(i))>=0);
             //System.out.println(CourseRepo.courses.get(i+1).compareTo(CourseRepo.courses.get(i)));
         }
     }
@@ -74,8 +74,8 @@ class CourseControllerTest {
     @Test
     void filterCredits() {
         cursController.filterCredits();
-        for(int i = 0; i< CourseRepo.courses.size()-1; i++){
-            assert(CourseRepo.courses.get(i).getCredits()<8);
+        for(int i = 0; i< cursController.repo.size()-1; i++){
+            assert(cursController.repo.courses.get(i).getCredits()<8);
         }
 
     }

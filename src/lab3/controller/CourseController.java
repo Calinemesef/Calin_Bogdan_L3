@@ -32,15 +32,15 @@ public class CourseController implements ICrudRepository<Course> {
      *  Methode fur Sortieren der Kursen aus dem Repo nach Name
      */
     void sortByName(){
-        CourseRepo.courses.sort(Comparator.comparing(Course::getName));
+        repo.courses.sort(Comparator.comparing(Course::getName));
     }
 
     /**
      *  Methode fur Filtrieren der Kursen aus dem Repo nach Kreditanzahl, es bleiben nur diejenigen mit credits <8
      */
     void filterCredits(){
-        List<Course> listaNoua = CourseRepo.courses.stream().filter(curs -> curs.getCredits() < 8).collect(Collectors.toList());
-        CourseRepo.courses = listaNoua;
+        List<Course> listaNoua = repo.courses.stream().filter(curs -> curs.getCredits() < 8).collect(Collectors.toList());
+        repo.courses = listaNoua;
     }
 
 }
