@@ -25,6 +25,9 @@ public class StartApp {
         List<Teacher> teachers = new ArrayList<>();
         try {
             teachers = fisier.readFile();
+            // teacher_repo = teachers;
+            // CtrlTeacher.repo = teacher_repo
+            // Console c = new Console(CtrlTeacher,CtrlStudent,CtrlCourse)
             System.out.println(teachers.size());
 
         } catch (IOException e) {
