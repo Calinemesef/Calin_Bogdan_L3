@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Course implements  Comparable<Course>{
 
-    private String name;
+    private String nume;
     private Long teacherId;
     public int maxEnrollment;
     private List<Long> studentsEnrolled;
@@ -15,8 +15,8 @@ public class Course implements  Comparable<Course>{
 
     }
 
-    public Course(String name, Long teacherId, int maxEnrollment, List<Long> studentsEnrolled, int credits, long courseId) {
-        this.name = name;
+    public Course(String nume, Long teacherId, int maxEnrollment, List<Long> studentsEnrolled, int credits, long courseId) {
+        this.nume = nume;
         this.teacherId = teacherId;
         this.maxEnrollment = maxEnrollment;
         this.studentsEnrolled = studentsEnrolled;
@@ -24,12 +24,12 @@ public class Course implements  Comparable<Course>{
         this.courseId = courseId;
     }
 
-    public String getName() {
-        return name;
+    public String getNume() {
+        return nume;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNume(String nume) {
+        this.nume = nume;
     }
 
     public Long getTeacher() {
@@ -73,12 +73,12 @@ public class Course implements  Comparable<Course>{
     }
 
     public String toString(){
-        return "Cursul " + name + " cu id-ul " + courseId + " si cu numarul de credite " + credits + "\n";
+        return "Cursul " + nume + " cu id-ul " + courseId + " si cu numarul de credite " + credits + "\n";
     }
 
 
     @Override
     public int compareTo(Course o) {
-        return this.getName().compareTo(o.getName());
+        return this.getNume().compareTo(o.getNume());
     }
 }

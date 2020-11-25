@@ -43,4 +43,9 @@ public class Student extends Person{
     public void setEnrolledCourses(List<Long> enrolledCourses) {
         this.enrolledCourses = enrolledCourses;
     }
+
+    @Override
+    public String toString() {
+        return "Studentul " + getFirstName() + " " + getLastName() + " cu Id-ul: " + getStudentId() + "\n";
+    }
 }

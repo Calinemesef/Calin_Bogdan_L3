@@ -24,7 +24,8 @@ public class CoursesFile {
 
         for(JsonNode pm : parser.path("Course")) {
 
-            Course c = new Course(pm.path("name").asText());
+            Course c = new Course(pm.path("nume").asText());
+            c.setNume(pm.path("nume").asText());
             c.setTeacher(pm.path("teacherId").asLong());
             c.setMaxEnrollment(pm.path("maxEnrollment").asInt());
             c.setCredits(pm.path("credits").asInt());
