@@ -92,15 +92,4 @@ public class RegistrationSystem {
         courseRepository.findAll().forEach(toateCursurile::add);
         return toateCursurile;
     }
-
-//    public List<Course> validateList(List<Course> cursuri) throws EmptyListException{
-//
-//        if(cursuri.size()==0){
-//            throw new EmptyListException("Nu sunt cursuri cu locuri disponibile!");
-//        }
-//        else{
-//            return cursuri;
-//        }
-//    }
-
 }

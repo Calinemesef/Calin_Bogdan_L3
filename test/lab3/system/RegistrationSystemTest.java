@@ -80,7 +80,7 @@ class RegistrationSystemTest {
 
     @Test
     void retrieveCoursesWithFreePlaces() {
-        List<Course> lista = new ArrayList<>();
+        List<Course> lista;
         List<Course> lista2 = new ArrayList<>();
         lista2.add(c1);
         lista2.add(c2);
