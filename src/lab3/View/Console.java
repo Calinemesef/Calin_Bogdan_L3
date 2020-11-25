@@ -45,6 +45,18 @@ public class Console {
                 System.out.println("2. Retrieve courses with free places");
                 System.out.println("3. Retrieve students enrolled for a course");
                 System.out.println("4. Print all courses");
+                x = in.nextInt();
+                if(x == 0){
+                    break;
+                }
+                else
+                    if(x == 1){
+                        System.out.println("Student ID:");
+                        Integer idStudent = in.nextInt();
+                        System.out.println("Course ID:");
+                        Integer idCourse = in.nextInt();
+                    }
+
 
             }
 

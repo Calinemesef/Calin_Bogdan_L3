@@ -29,6 +29,7 @@ public class RegistrationSystem {
         long studentId = student.getStudentId();
 
         if (course.getStudentsEnrolled().contains(studentId) || student.getEnrolledCourses().contains(cursId)) {
+            System.out.println(" Studentul este deja inscris la curs");
             return false;
         }
         if (studentRepository.findOne(student.getStudentId()) != null && courseRepository.findOne(course.getCourseId()) != null) {
@@ -51,6 +52,7 @@ public class RegistrationSystem {
                     studentiNoi = course.getStudentsEnrolled();
                     studentiNoi.add(studentId);
                     course.setStudentsEnrolled(studentiNoi);
+                    System.out.println(" Register succesful");
                     return true;
                 }
             } else {
