@@ -1,14 +1,20 @@
 {"Teacher": [{
-  "firstName": "Prenume",
-  "lastName": "Nume",
+  "firstName": "Gigel",
+  "lastName": "Frone",
   "teacherId": 1,
   "courses": [1,2,3]
 },
   {
-  "firstName" : "Prenume2",
-  "lastName": "Nume2",
-  "teacherId": 2,
-    "courses": [2,3,4]
-    }
+    "firstName" : "Gica",
+    "lastName": "Hagi",
+    "teacherId": 2,
+    "courses": [5]
+  },
+  {
+    "firstName" : "Ion",
+    "lastName": "Tiriac",
+    "teacherId": 3,
+    "courses": [4]
+  }
 ]
 }

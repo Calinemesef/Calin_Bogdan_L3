@@ -7,7 +7,7 @@ import java.util.List;
 
 public class StudRepo implements ICrudRepository<Student>{
 
-    public List<Student> students = new ArrayList<Student>();
+    public List<Student> students = new ArrayList<>();
 
     public StudRepo() {
         super();

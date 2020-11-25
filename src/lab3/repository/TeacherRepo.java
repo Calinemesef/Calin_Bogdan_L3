@@ -7,12 +7,10 @@ import java.util.List;
 
 public class TeacherRepo implements ICrudRepository<Teacher>{
 
-    public List<Teacher> teachers = new ArrayList<Teacher>();
+    public List<Teacher> teachers = new ArrayList<>();
 
     public boolean isEmpty(){
-        if(teachers.isEmpty())
-            return true;
-        return false;
+        return teachers.isEmpty();
     }
 
     @Override

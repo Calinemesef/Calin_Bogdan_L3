@@ -58,14 +58,13 @@ public class TeacherController implements ICrudRepository<Teacher> {
                 List<Long> cursuriModificateProfesori = new ArrayList<>();
 
                 for(Long c : teacher.getCourses()) {
-                    if(c != cursId) {
+                    if(!c.equals(cursId)) {
                         cursuriModificateProfesori.add(c);
                     }
                 }
 
                 teacher.setCourses(cursuriModificateProfesori);
 
-                //CourseController.repo.delete(course.getCourseId());
                 repoCurs.courses.remove(course);
                 return true;
             }

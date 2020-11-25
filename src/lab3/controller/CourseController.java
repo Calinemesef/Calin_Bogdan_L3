@@ -4,9 +4,7 @@ import lab3.classes.Course;
 import lab3.repository.CourseRepo;
 import lab3.repository.ICrudRepository;
 
-import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class CourseController implements ICrudRepository<Course> {
@@ -39,8 +37,7 @@ public class CourseController implements ICrudRepository<Course> {
      *  Methode fur Filtrieren der Kursen aus dem Repo nach Kreditanzahl, es bleiben nur diejenigen mit credits <8
      */
     void filterCredits(){
-        List<Course> listaNoua = repo.courses.stream().filter(curs -> curs.getCredits() < 8).collect(Collectors.toList());
-        repo.courses = listaNoua;
+        repo.courses = repo.courses.stream().filter(curs -> curs.getCredits() < 8).collect(Collectors.toList());
     }
 
 }

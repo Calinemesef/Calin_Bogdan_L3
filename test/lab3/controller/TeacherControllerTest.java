@@ -6,8 +6,6 @@ import lab3.classes.Teacher;
 import lab3.repository.CourseRepo;
 import lab3.repository.StudRepo;
 import lab3.repository.TeacherRepo;
-import lab3.system.RegistrationSystem;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +18,6 @@ class TeacherControllerTest {
     CourseRepo repo_curs = new CourseRepo();
     StudRepo repo_student = new StudRepo();
     TeacherRepo repo_teacher = new TeacherRepo();
-    RegistrationSystem regsys = new RegistrationSystem(repo_teacher,repo_student,repo_curs);
 
     List<Long> studenti_c1 = new ArrayList<>();
     List<Long> studenti_c2 = new ArrayList<>();
