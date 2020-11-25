@@ -66,6 +66,7 @@ public class TeacherController implements ICrudRepository<Teacher> {
                 teacher.setCourses(cursuriModificateProfesori);
 
                 repoCurs.courses.remove(course);
+                System.out.println("Curs sters cu succes");
                 return true;
             }
             else {
