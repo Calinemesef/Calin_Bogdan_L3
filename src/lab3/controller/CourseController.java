@@ -29,8 +29,9 @@ public class CourseController implements ICrudRepository<Course> {
     /**
      *  Methode fur Sortieren der Kursen aus dem Repo nach Name
      */
-    public void sortByName(){
-        repo.courses.sort(Comparator.comparing(Course::getName));
+
+    void sortByName(){
+        repo.courses.sort(Comparator.comparing(Course::getNume));
     }
 
     /**
