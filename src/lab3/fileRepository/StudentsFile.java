@@ -17,7 +17,7 @@ public class StudentsFile {
     public List<Student> readFile() throws IOException {
          List<Student> students = new ArrayList<>();
 
-         Reader reader = new BufferedReader(new FileReader("studenti.json"));
+         Reader reader = new BufferedReader(new FileReader("src/lab3/fileRepository/studenti.json"));
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode parser = objectMapper.readTree(reader);
