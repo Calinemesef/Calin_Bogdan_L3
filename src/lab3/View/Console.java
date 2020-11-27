@@ -4,16 +4,14 @@ import lab3.classes.Student;
 import lab3.classes.Teacher;
 import lab3.controller.*;
 import lab3.system.*;
+import lab3.exception.*;
 
 import java.util.List;
 import java.util.Scanner;
 /*
-error handling
 diagrama
-studentctrl - set id set lista set credits
 curatat cod
 comentarii
-override in fisier json
 
  */
 
@@ -61,8 +59,21 @@ public class Console {
 
                     System.out.println("Student ID:");
                     long idStudent = in.nextLong();
+                    try{
+                        TestInputException.validateID(idStudent);       // Error Handling
+                    } catch (TestInputException e) {
+                        e.printStackTrace();
+                        break;
+                    }
                     System.out.println("Course ID:");
                     long idCourse = in.nextLong();
+                    try {
+                        TestInputException.validateID(idCourse);        // Error Handling
+                    } catch (TestInputException e) {
+                        e.printStackTrace();
+                        break;
+                    }
+
                     Course curs = cursCtrl.findOne(idCourse);
                     Student student = studCtrl.findOne(idStudent);
                     registrationSystem.register(curs, student);
@@ -80,10 +91,19 @@ public class Console {
 
                     System.out.println("Course ID: ");
                     long idCourse = in.nextLong();
+                    try{
+                        TestInputException.validateID(idCourse);        // Error Handling
+                    } catch (TestInputException e) {
+                        e.printStackTrace();
+                        break;
+                    }
                     Course curs = cursCtrl.findOne(idCourse);
                     List<Long> listaIduri = registrationSystem.retrieveStudentsEnrolledForACourse(curs);
-                    for (Long id : listaIduri)
-                        System.out.println(id);
+                    for (Student s : studCtrl.repo.students){
+                        if(listaIduri.contains(s.getStudentId()))
+                            System.out.println(s);
+                    }
+
                 }
                 if (x == 4) {
                     System.out.println("4. Print all courses");
@@ -108,6 +128,7 @@ public class Console {
                     System.out.println("1. Delete course from teacher");
                     System.out.println("Teacher ID:");
                     Long teacherID = in.nextLong();
+
                     System.out.println("Course ID:");
                     Long courseID = in.nextLong();
 
@@ -175,9 +196,29 @@ public class Console {
                     System.out.println("2. Add student");
                     System.out.println("first Name: ");
                     String firstName = in.next();
+                    try{
+                        TestInputException.validateName(firstName);     // Error Handling
+                    } catch (TestInputException e) {
+                        e.printStackTrace();
+                        break;
+                    }
                     System.out.println("last Name: ");
                     String lastName = in.next();
-                    Student s = new Student(firstName,lastName);
+                    try{
+                        TestInputException.validateName(lastName);      // Error Handling
+                    } catch (TestInputException e) {
+                        e.printStackTrace();
+                        break;
+                    }
+                    System.out.println("ID for the student:");
+                    long idstudent = in.nextLong();
+                    try{
+                        TestInputException.validateID(idstudent);       // Error Handling
+                    } catch (TestInputException e) {
+                        e.printStackTrace();
+                        break;
+                    }
+                    Student s = new Student(firstName,lastName,idstudent);
                     studCtrl.save(s);
                     System.out.println("Student added");
                 }
@@ -185,6 +226,12 @@ public class Console {
                     System.out.println("3.Delete student");
                     System.out.println("Student ID: ");
                     long id = in.nextLong();
+                    try{
+                        TestInputException.validateID(id);
+                    } catch (TestInputException e) {                // Error Handling
+                        e.printStackTrace();
+                        break;
+                    }
                     Student s= studCtrl.delete(id);
                     if(s != null){
                         System.out.println("Student deleted");

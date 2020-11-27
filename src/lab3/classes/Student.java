@@ -9,8 +9,10 @@ public class Student extends Person{
 
     private List<Long> enrolledCourses;
 
-    public Student(String firstName, String lastName){
+    public Student(String firstName, String lastName, long IDstudent){
+
         super(firstName, lastName);
+        this.studentId = IDstudent;
     }
 
     public Student(String firstName, String lastName, long studentId, int totalCredits, List<Long> enrolledCourses) {

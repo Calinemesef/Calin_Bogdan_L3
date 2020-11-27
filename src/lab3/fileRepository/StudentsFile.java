@@ -24,8 +24,7 @@ public class StudentsFile {
 
         for(JsonNode pm : parser.path("Student")) {
 
-            Student s = new Student(pm.path("firstName").asText(), pm.path("lastName").asText());
-            s.setStudentId(pm.path("studentId").asLong());
+            Student s = new Student(pm.path("firstName").asText(), pm.path("lastName").asText(),pm.path("studentId").asLong());
             s.setTotalCredits(pm.path("totalCredits").asInt());
 
             List<Long> idCourses = new ArrayList<>();
