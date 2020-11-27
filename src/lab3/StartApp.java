@@ -60,6 +60,11 @@ public class StartApp {
             Console console = new Console(courseController, studController, teacherController);
 
             console.display();
+
+            fisierTeacher.writeFile(teacherController.repo.teachers);
+            fisierStudent.writeFile(studController.repo.students);
+            fisierCourse.writeFile(courseController.repo.courses);
+
             // CtrlTeacher.repo = teacher_repo
             // Console c = new Console(CtrlTeacher,CtrlStudent,CtrlCourse)
             //System.out.println(teachers.size());
