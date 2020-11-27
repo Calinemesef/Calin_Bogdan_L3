@@ -50,11 +50,11 @@ public class TeacherFile {
         ObjectMapper mapper = new ObjectMapper(jsonFactory);
 
         try{
-            file = new FileWriter("profesori.json");
+            file = new FileWriter("src/lab3/fileRepository/profesoriOutput.json");
             JSONArray teachers = new JSONArray();
             teachersList.forEach(teachers::add);
 
-            object.put("Student", teachers);
+            object.put("Teacher", teachers);
             mapper.writeValue(file, object);
         } catch (IOException e){
             e.printStackTrace();

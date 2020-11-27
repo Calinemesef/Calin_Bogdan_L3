@@ -51,7 +51,7 @@ public class StudentsFile {
         ObjectMapper mapper = new ObjectMapper(jsonFactory);
 
         try{
-            file = new FileWriter("studenti.json");
+            file = new FileWriter("src/lab3/fileRepository/studentiOutput.json");
             JSONArray students = new JSONArray();
             studentsList.forEach(students::add);
 

@@ -54,7 +54,7 @@ public class CoursesFile {
         ObjectMapper mapper = new ObjectMapper(jsonFactory);
 
         try{
-            file = new FileWriter("cursuri.json");
+            file = new FileWriter("src/lab3/fileRepository/cursuriOutput.json");
             JSONArray courses = new JSONArray();
             coursesList.forEach(courses::add);
 
