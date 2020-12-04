@@ -9,10 +9,6 @@ public class CourseRepo implements ICrudRepository<Course> {
 
     public List<Course> courses = new ArrayList<>();
 
-    public boolean isEmpty(){
-        return courses.size() == 0;
-    }
-
     @Override
     public Course findOne(Long id) {
         for(Course c:courses)

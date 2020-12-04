@@ -8,11 +8,11 @@ import lab3.exception.*;
 
 import java.util.List;
 import java.util.Scanner;
+
 /*
 diagrama
 curatat cod
 comentarii
-
  */
 
 public class Console {

@@ -26,10 +26,6 @@ public class Student extends Person{
         return studentId;
     }
 
-    public void setStudentId(long studentId) {
-        this.studentId = studentId;
-    }
-
     public int getTotalCredits() {
         return totalCredits;
     }

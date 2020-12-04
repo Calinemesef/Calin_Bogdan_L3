@@ -9,10 +9,6 @@ public class TeacherRepo implements ICrudRepository<Teacher>{
 
     public List<Teacher> teachers = new ArrayList<>();
 
-    public boolean isEmpty(){
-        return teachers.isEmpty();
-    }
-
     @Override
     public Teacher findOne(Long id) {
         for(Teacher t:teachers)
