@@ -118,4 +118,14 @@ public class RegistrationSystem {
         });
         return students;
     }
+
+    /**
+     * Methode fur Erstellen der Observable-liste fur die Kursen
+     * @return Liste von Kursen
+     */
+    public ObservableList<Course> observableCourses() {
+        ObservableList<Course> courses = FXCollections.observableArrayList();
+        courseRepository.findAll().forEach(courses::add);
+        return courses;
+    }
 }
