@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherFile {
+    public FileWriter file;
 
     public List<Teacher> readFile() throws IOException {
         List<Teacher> teachers= new ArrayList<>();
@@ -40,7 +41,6 @@ public class TeacherFile {
         return teachers;
     }
 
-    FileWriter file;
 
     public void writeFile(Iterable<Teacher> teachersList){
 

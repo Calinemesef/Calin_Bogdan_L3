@@ -1,14 +1,18 @@
 package lab3.system;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import lab3.classes.Course;
 import lab3.classes.Student;
+import lab3.classes.Teacher;
 import lab3.repository.CourseRepo;
 import lab3.repository.StudRepo;
 import lab3.repository.TeacherRepo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RegistrationSystem {
 
@@ -93,5 +97,25 @@ public class RegistrationSystem {
         List<Course> toateCursurile = new ArrayList<>();
         courseRepository.findAll().forEach(toateCursurile::add);
         return toateCursurile;
+    }
+
+    /**
+     * Methode fur Erstellen der Observable-liste fur die Studenten
+     * @param id -id von teacher
+     * @return Liste von Studenten
+     */
+    public ObservableList<Student> observableStudents(long id) {
+        Teacher teacher = teacherRepository.findOne(id);
+        ObservableList<Student> students = FXCollections.observableArrayList();
+        studentRepository.findAll().forEach(student -> {
+            AtomicBoolean intersection = new AtomicBoolean(false);
+            student.getEnrolledCourses().forEach(course -> {
+                if (teacher.getCourses().contains(course))
+                    intersection.set(true);
+            });
+            if (intersection.get())
+                students.add(student);
+        });
+        return students;
     }
 }
