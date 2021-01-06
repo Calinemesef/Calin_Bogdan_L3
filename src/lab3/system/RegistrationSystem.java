@@ -128,4 +128,34 @@ public class RegistrationSystem {
         courseRepository.findAll().forEach(courses::add);
         return courses;
     }
+
+    /**
+     * Methode fur Testen ob ein Lehrer in der liste vorkommt
+     * @param teacherId
+     * @param firstName
+     * @param lastName
+     * @return true falls ja, false falls nicht
+     */
+    public boolean validateTeacher(long teacherId, String firstName, String lastName) {
+        Teacher teacher = this.teacherRepository.findOne(teacherId);
+        if (teacher != null) {
+            return teacher.getFirstName().equals(firstName) && teacher.getLastName().equals(lastName);
+        }
+        return false;
+    }
+
+    /**
+     * Methode fur Testen ob ein Student in der Liste vorkommt
+     * @param studentId
+     * @param firstName
+     * @param lastName
+     * @return true falls ja, false falls nicht
+     */
+    public boolean validateStudent(long studentId, String firstName, String lastName) {
+        Student student = this.studentRepository.findOne(studentId);
+        if (student != null) {
+            return student.getFirstName().equals(firstName) && student.getLastName().equals(lastName);
+        }
+        return false;
+    }
 }
