@@ -4,7 +4,9 @@ import lab3.classes.Course;
 import lab3.repository.CourseRepo;
 import lab3.repository.ICrudRepository;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class CourseController implements ICrudRepository<Course> {
@@ -32,6 +34,16 @@ public class CourseController implements ICrudRepository<Course> {
 
     public void sortByName(){
         repo.courses.sort(Comparator.comparing(Course::getNume));
+    }
+
+    /**
+     * Methode fur Sortieren der Kursen aus dem Repo nach der Kreditanzahl
+     */
+    public void sortByCredits() {
+        List<Course> courses = new ArrayList<>();
+        repo.findAll().forEach(courses::add);
+        courses.sort((o1, o2) -> o2.getCredits() - o1.getCredits());
+        this.repo.courses = courses;
     }
 
     /**
