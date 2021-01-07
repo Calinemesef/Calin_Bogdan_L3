@@ -11,6 +11,11 @@ public class Teacher extends Person{
         super(firstName, lastName);
     }
 
+    public Teacher(String firstName, String lastName, long teacherId) {
+        super(firstName, lastName);
+        this.teacherId = teacherId;
+    }
+
     public Teacher(String firstName, String lastName, long teacherId, List<Long> courses) {
         super(firstName, lastName);
         this.teacherId = teacherId;

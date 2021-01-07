@@ -50,12 +50,14 @@ public class RegistrationSystem {
                     cursuriNoi.add(cursId);
                     student.setEnrolledCourses(cursuriNoi);
                     student.setTotalCredits(student.getTotalCredits() + course.getCredits());
+                    studentRepository.update(student);
 
                     //se appenduieste studentul nou inclus la lista de studenti inscrisi la un curs
                     List<Long> studentiNoi;
                     studentiNoi = course.getStudentsEnrolled();
                     studentiNoi.add(studentId);
                     course.setStudentsEnrolled(studentiNoi);
+                    courseRepository.update(course);
                     System.out.println(" Register succesful");
                     return true;
                 }
@@ -130,6 +132,38 @@ public class RegistrationSystem {
     }
 
     /**
+     * Methode fur Einfugen eines Studenten
+     * @param studentId
+     * @param firstName
+     * @param lastName
+     * @throws Exception falls EIngabedaten falsch sind
+     */
+    public void addStudent(long studentId, String firstName, String lastName) throws Exception {
+        if (studentId >= 0) {
+            Student student = new Student(firstName, lastName, studentId);
+            if (this.studentRepository.save(student) == student)
+                throw new Exception("Id wird bereits verwendet");
+        } else
+            throw new Exception("ungultiger ID");
+    }
+
+    /**
+     * Methode fur Einfugen eines Kurses
+     * @param teacherId
+     * @param firstName
+     * @param lastName
+     * @throws Exception falls Eingabedaten falsch sind
+     */
+    public void addTeacher(long teacherId, String firstName, String lastName) throws Exception {
+        if (teacherId >= 0) {
+            Teacher teacher = new Teacher(firstName, lastName, teacherId);
+            if (this.teacherRepository.save(teacher) == teacher)
+                throw new Exception("Id wird bereits verwendet");
+        } else
+            throw new Exception("ungultiger ID");
+    }
+
+    /**
      * Methode fur Testen ob ein Lehrer in der liste vorkommt
      * @param teacherId
      * @param firstName
@@ -157,5 +191,49 @@ public class RegistrationSystem {
             return student.getFirstName().equals(firstName) && student.getLastName().equals(lastName);
         }
         return false;
+    }
+
+    /**
+     * Methode fur Registrieren eines Studenten zu einem Kurs, fur die GUI
+     * @param studentId
+     * @param courseId
+     * @throws Exception
+     */
+    public void registerGUI(long studentId, long courseId) throws Exception {
+        Student student = studentRepository.findOne(studentId);
+        Course course = courseRepository.findOne(courseId);
+
+        if (student != null && course != null) {
+            if (student.getEnrolledCourses().contains(courseId) || course.getStudentsEnrolled().contains(studentId))
+                throw new Exception("Der Student ist schon zu diesem Kurs registriert.");
+            else if (course.getCredits() + student.getTotalCredits() > 30)
+                throw new Exception("Kreditanzahl zu gross");
+            else if (course.getMaxEnrollment() - course.getStudentsEnrolled().size() == 0)
+                throw new Exception("Der Kurs hat keinen Platz");
+            else {
+                List<Long> courses = student.getEnrolledCourses();
+                courses.add(courseId);
+                student.setEnrolledCourses(courses);
+
+                List<Long> students = course.getStudentsEnrolled();
+                students.add(studentId);
+                course.setStudentsEnrolled(students);
+
+                student.setTotalCredits(student.getTotalCredits() + course.getCredits());
+
+                this.studentRepository.update(student);
+                this.courseRepository.update(course);
+            }
+        } else {
+            throw new Exception("Student oder Kurs ungultig");
+        }
+    }
+
+    public StudRepo getStudentRepo() {
+        return studentRepository;
+    }
+    public TeacherRepo getTeacherRepo() { return teacherRepository; }
+    public CourseRepo getCourseRepo() {
+        return courseRepository;
     }
 }
