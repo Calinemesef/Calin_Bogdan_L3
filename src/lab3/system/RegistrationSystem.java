@@ -131,47 +131,16 @@ public class RegistrationSystem {
         return courses;
     }
 
-    /**
-     * Methode fur Einfugen eines Studenten
-     * @param studentId
-     * @param firstName
-     * @param lastName
-     * @throws Exception falls EIngabedaten falsch sind
-     */
-    public void addStudent(long studentId, String firstName, String lastName) throws Exception {
-        if (studentId >= 0) {
-            Student student = new Student(firstName, lastName, studentId);
-            if (this.studentRepository.save(student) == student)
-                throw new Exception("Id wird bereits verwendet");
-        } else
-            throw new Exception("ungultiger ID");
-    }
-
-    /**
-     * Methode fur Einfugen eines Kurses
-     * @param teacherId
-     * @param firstName
-     * @param lastName
-     * @throws Exception falls Eingabedaten falsch sind
-     */
-    public void addTeacher(long teacherId, String firstName, String lastName) throws Exception {
-        if (teacherId >= 0) {
-            Teacher teacher = new Teacher(firstName, lastName, teacherId);
-            if (this.teacherRepository.save(teacher) == teacher)
-                throw new Exception("Id wird bereits verwendet");
-        } else
-            throw new Exception("ungultiger ID");
-    }
 
     /**
      * Methode fur Testen ob ein Lehrer in der liste vorkommt
-     * @param teacherId
-     * @param firstName
-     * @param lastName
+     * @param teacherID id von lehrer
+     * @param firstName vorname
+     * @param lastName nachname
      * @return true falls ja, false falls nicht
      */
-    public boolean validateTeacher(long teacherId, String firstName, String lastName) {
-        Teacher teacher = this.teacherRepository.findOne(teacherId);
+    public boolean validateTeacher(long teacherID, String firstName, String lastName) {
+        Teacher teacher = this.teacherRepository.findOne(teacherID);
         if (teacher != null) {
             return teacher.getFirstName().equals(firstName) && teacher.getLastName().equals(lastName);
         }
@@ -180,13 +149,13 @@ public class RegistrationSystem {
 
     /**
      * Methode fur Testen ob ein Student in der Liste vorkommt
-     * @param studentId
-     * @param firstName
-     * @param lastName
+     * @param studentID id von student
+     * @param firstName vorname
+     * @param lastName nachname
      * @return true falls ja, false falls nicht
      */
-    public boolean validateStudent(long studentId, String firstName, String lastName) {
-        Student student = this.studentRepository.findOne(studentId);
+    public boolean validateStudent(long studentID, String firstName, String lastName) {
+        Student student = this.studentRepository.findOne(studentID);
         if (student != null) {
             return student.getFirstName().equals(firstName) && student.getLastName().equals(lastName);
         }
@@ -195,16 +164,16 @@ public class RegistrationSystem {
 
     /**
      * Methode fur Registrieren eines Studenten zu einem Kurs, fur die GUI
-     * @param studentId
-     * @param courseId
-     * @throws Exception
+     * @param studentID id des studenten
+     * @param courseID id des kurses
+     * @throws Exception falls notig
      */
-    public void registerGUI(long studentId, long courseId) throws Exception {
-        Student student = studentRepository.findOne(studentId);
-        Course course = courseRepository.findOne(courseId);
+    public void registerGUI(long studentID, long courseID) throws Exception {
+        Student student = studentRepository.findOne(studentID);
+        Course course = courseRepository.findOne(courseID);
 
         if (student != null && course != null) {
-            if (student.getEnrolledCourses().contains(courseId) || course.getStudentsEnrolled().contains(studentId))
+            if (student.getEnrolledCourses().contains(courseID) || course.getStudentsEnrolled().contains(studentID))
                 throw new Exception("Der Student ist schon zu diesem Kurs registriert.");
             else if (course.getCredits() + student.getTotalCredits() > 30)
                 throw new Exception("Kreditanzahl zu gross");
@@ -212,11 +181,11 @@ public class RegistrationSystem {
                 throw new Exception("Der Kurs hat keinen Platz");
             else {
                 List<Long> courses = student.getEnrolledCourses();
-                courses.add(courseId);
+                courses.add(courseID);
                 student.setEnrolledCourses(courses);
 
                 List<Long> students = course.getStudentsEnrolled();
-                students.add(studentId);
+                students.add(studentID);
                 course.setStudentsEnrolled(students);
 
                 student.setTotalCredits(student.getTotalCredits() + course.getCredits());
@@ -231,9 +200,5 @@ public class RegistrationSystem {
 
     public StudRepo getStudentRepo() {
         return studentRepository;
-    }
-    public TeacherRepo getTeacherRepo() { return teacherRepository; }
-    public CourseRepo getCourseRepo() {
-        return courseRepository;
     }
 }
